@@ -8,6 +8,9 @@ datasource db {
 }
 
 model Post {
-  id      Int    @id @default(autoincrement())
-  message String
+  id       Int    @id @default(autoincrement())
+  message  String
+  good     Int
+  bad      Int
+  favorite Int
 }
