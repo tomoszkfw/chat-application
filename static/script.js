@@ -1,15 +1,13 @@
 const messageInput = document.getElementById("message-input");
-const reactionId = document.getElementById("reactionId-input");
-const good = document.getElementById("good");
-const favorite = document.getElementById("favorite");
-const bad = document.getElementById("bad");
-
-const noMessage = messageInput.value === "";
-const noId = reactionId.value === "";
-const noSelection = !good.checked && !favorite.checked && !bad.checked;
+const reactionIdInput = document.getElementById("reactionIdSelect");
+const selectReaction = document.getElementById("reaction");
 
 setInterval(() => {
-    if (noMessage && noId && noSelection) {
+    if (
+        !messageInput.value &&
+        !reactionIdInput.value &&
+        !selectReaction.reaction.value
+    ) {
         window.location.reload();
     }
 }, 5 * 1000);
