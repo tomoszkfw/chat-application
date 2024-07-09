@@ -25,4 +25,21 @@ app.post("/send", async (request, response) => {
   response.redirect("/");
 });
 
+app.post("/search", async (request, response) => {
+  const searchPosts = await prisma.post.findMany({
+    where: {
+      message: {
+        contains: request.body.keyword,  
+      },
+    },
+  });
+
+  const searchHtml = searchTemplate.replace(
+    "<!-- posts -->",
+    searchPosts.map((post) => `<li>${escapeHTML(post.message)}</li>`).join(""),
+  );
+  
+  response.send(searchHtml)
+});
+
 app.listen(3000);
