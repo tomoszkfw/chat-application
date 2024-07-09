@@ -25,6 +25,7 @@ app.post("/send", async (request, response) => {
   response.redirect("/");
 });
 
+const searchTemplate = fs.readFileSync("./searchTemplate.html", "utf-8");
 app.post("/search", async (request, response) => {
   const searchPosts = await prisma.post.findMany({
     where: {
